@@ -1,0 +1,25 @@
+/* Tivia Game Stylesheet */
+
+/*  COLORS
+
+d42c38 : BG
+fde3e3 : white question container
+2c1e1f : dark answer container
+d42c38 : red header text
+2ecd71 : green answer
+d42c38 : red answer
+
+*/
+* {
+    box-sizing: border-box;
+}
+
+.html, body {
+    font-family: 'Robot', sans-serif;
+    font-size: 16px;
+    color: #282828;
+}
+
+.wrapper {
+    background-color: #d42c38;
+}
