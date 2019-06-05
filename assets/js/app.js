@@ -1,7 +1,22 @@
 /// Core Application
 
-// DATA
-// Question Libraryu
+// App Data
+const appData = {
+    
+    // Question Data
+    questionRound:   0,     // Question X of Y
+    questionID:      1,     // Array index to grab question from
+    questionCorrect: 0,     // Correct questions total
+    questionWrong:   0,     // Wrong questions total
+
+    // Time Data
+    timeSecLeft:     20     // Value equal to seconds
+
+}
+
+
+// Question Library
+// A[0] is always answer
 const questionLibrary = [
 
     {
@@ -31,8 +46,6 @@ const questionLibrary = [
 
 ]
 
-console.log(get_question(0))
-console.log(get_question_answer(0, 0))
 // App first run initialization ------------
 
 // Hide core elements
@@ -43,4 +56,4 @@ ui_hide_element("container-message-hud");
 
 
 // Bind Setup Button
-document.getElementById("btn-game-start").addEventListener('click', game_new_game);
+document.getElementById("btn-game-start").addEventListener('click', app_new_game);

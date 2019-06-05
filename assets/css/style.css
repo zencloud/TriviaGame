@@ -194,6 +194,11 @@ input[type="radio"] {
 	        animation: animate-swing-in 0.3s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 }
 
+.animate-slide-out {
+	-webkit-animation: animate-slide-out 0.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: animate-slide-out 0.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
 
 @-webkit-keyframes animate-drop-div {
     0% {
@@ -228,6 +233,8 @@ input[type="radio"] {
     }
   }
 
+
+
   @-webkit-keyframes animate-swing-in {
     0% {
       -webkit-transform: rotateX(-100deg);
@@ -244,8 +251,6 @@ input[type="radio"] {
       opacity: 1;
     }
   }
-
-
   @keyframes animate-swing-in {
     0% {
       -webkit-transform: rotateX(-100deg);
