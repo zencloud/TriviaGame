@@ -13,6 +13,22 @@ function game_new_game () {
     ui_show_element("container-answers");
     //ui_show_element("container-message-hud");
 
+    // Hide Welcome Content
+    ui_hide_element("btn-game-start");
+    ui_hide_element("container-welcome");
+
+}
+
+// Get Question
+function get_question(questionIndex) {
+    return questionLibrary[questionIndex].Q;
+}
+
+// Get Question Answer from Array. 0 is always answer.
+function get_question_answer(questionIndex, answerIndex) { 
+
+    return questionLibrary[questionIndex].A[answerIndex];
+
 }
 
 
