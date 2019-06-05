@@ -1,24 +1,26 @@
 /* Tivia Game Stylesheet */
 
 /*  COLORS
-
 d42c38 : BG
-fde3e3 : white question container
+fff5ff : white question container
 2c1e1f : dark answer container
 d42c38 : red header text
 2ecd71 : green answer
 d42c38 : red answer
-
 */
+
+/* GLOBAL STYLES ----------------------------------*/
+
 * {
     box-sizing: border-box;
 }
 
 :root {
     --site-width: 420px;
-    --white: #fde3e3;
+    --white: #fff5ff;
     --dark: #2c1e1f;
     --green: #2ecd71;
+    --red: #d42c38;
 }
 
 .html, body {
@@ -27,13 +29,22 @@ d42c38 : red answer
     color: #282828;
 }
 
+h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Wrapper ----------------------------------*/
+
 #wrapper {
     background-color: #d42c38;
     overflow: hidden;
     height: 100vh;
 }
 
-/* Box Styles */
+
+/* Box Styles ----------------------------------*/
+
 .round-box {
     width: var(--site-width);
     border-radius: 10px;
@@ -41,7 +52,20 @@ d42c38 : red answer
     margin: 0 auto;
 }
 
-/*  MAIN CONTAINERS */
+.center {
+    text-align: center;
+}
+
+
+/*  MAIN CONTAINERS ----------------------------------*/
+
+#container-welcome {
+    font-size: 18px;
+    margin-top: 200px;
+    margin-bottom: 20px;
+    line-height: 24px;
+}
+
 
 #container-time-remaining {
     display: flex;
@@ -54,8 +78,24 @@ d42c38 : red answer
 
 #container-question {
     margin-top: 20px;
-    height: 250px;
+    height: 220px;
     background-color: var(--white);
+}
+
+#container-question > h2 {
+    font-size: 16;
+    font-weight: 700;
+    color: var(--red);
+}
+
+#question-display {
+    display: flex;
+    align-items: center;
+    height: 95%;
+    margin: 0 auto;
+    width: 90%;
+    text-align: center;
+    font-size: 24px;
 }
 
 #container-message-hud {
@@ -76,7 +116,8 @@ d42c38 : red answer
     padding-top: 20px;
 }
 
-/*  CELLS  */
+
+/* CELLS  ----------------------------------*/
 
 #cell-time-display {
     font-weight: 600;
@@ -101,7 +142,11 @@ d42c38 : red answer
 
 .cell-answers > p {
     display: inline;
+    cursor: pointer;
 }
+
+
+/* BUTTONS ----------------------------------*/
 
 button {
     border: 0;
@@ -116,8 +161,104 @@ button {
 button:hover {
     background-color: var(--dark);
     color: var(--white);
+    box-shadow: none;
+    cursor: pointer;
 }
 
 button:focus {
     outline: none;
 }
+
+
+/* Input: Radio Buttons ----------------------------------*/
+
+input[type="radio"] {
+    border: none;
+    background-color: var(--white);
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-top: -3px;
+}
+
+
+/* Animation Setup ---------------------------------- */
+
+.animate-drop-div {
+	-webkit-animation: animate-drop-div 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+	        animation: animate-drop-div 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+.animate-swing-in {
+	-webkit-animation: animate-swing-in 0.3s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+	        animation: animate-swing-in 0.3s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+
+@-webkit-keyframes animate-drop-div {
+    0% {
+      -webkit-transform: scaleY(0);
+              transform: scaleY(0);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scaleY(1);
+              transform: scaleY(1);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+      opacity: 1;
+    }
+  }
+  @keyframes animate-drop-div {
+    0% {
+      -webkit-transform: scaleY(0);
+              transform: scaleY(0);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scaleY(1);
+              transform: scaleY(1);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes animate-swing-in {
+    0% {
+      -webkit-transform: rotateX(-100deg);
+              transform: rotateX(-100deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateX(0deg);
+              transform: rotateX(0deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 1;
+    }
+  }
+
+
+  @keyframes animate-swing-in {
+    0% {
+      -webkit-transform: rotateX(-100deg);
+              transform: rotateX(-100deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateX(0deg);
+              transform: rotateX(0deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 1;
+    }
+  }

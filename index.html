@@ -18,7 +18,7 @@
     <!-- Wrapper -->
     <div id="wrapper">
 
-        <!-- Time Remaining -->
+        <!-- Time Remaining --> 
         <div id="container-time-remaining" class="round-box">
             <p>Time Remaining:</p>
             <div id="cell-time-display">
@@ -28,25 +28,28 @@
 
         <!-- Question -->
         <div id="container-question" class="round-box">
-            (Q)
+            <h2>Question 1 of 5:</h2>
+            <div id="question-display">
+                What is the thing in the thing in the place in the thing?
+            </div>
         </div>
 
         <!-- Answer Selection -->
         <div id="container-answers" class="round-box">
             <div class="cell-answers">
-                <input type="radio">
+                <input type="radio" name="answer-choice">
                 <p>Answer 1</p>
             </div>
             <div class="cell-answers">
-                <input type="radio">
+                <input type="radio" name="answer-choice">
                 <p>Answer 2</p>
             </div>
             <div class="cell-answers">
-                <input type="radio">
+                <input type="radio" name="answer-choice">
                 <p>Answer 3</p>
             </div>
             <div class="cell-answers">
-                <input type="radio">
+                <input type="radio" name="answer-choice">
                 <p>Answer 4</p>
             </div>
         </div>
@@ -56,9 +59,14 @@
             <p>Message</p>
         </div>
 
-        <!-- TEMP CONTAINER FOR BUTON DESIGN -->
-        <div class="round-box">
-            <button>Start Trivia!</button>
+        <div id="container-welcome" class="round-box center">
+            <h2>Welcome.</h2>
+            <p>You will be given 5 questions to answer. You have 30 seconds to answer each question.</p>
+            <p>Good Luck!</p>
+        </div>
+        <!-- Player Input Button -->
+        <div class="round-box center">
+            <button id="btn-game-start">Start Trivia!</button>
         </div>
 
 
