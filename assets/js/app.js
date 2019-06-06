@@ -10,7 +10,8 @@ const appData = {
     questionWrong:   0,     // Wrong questions total
 
     // Time Data
-    timeSecLeft:     20     // Value equal to seconds
+    timeSecLeft:     20,     // Value equal to seconds
+    timerIndex:      0
 
 }
 
@@ -40,7 +41,7 @@ const questionLibrary = [
     },
 
     {
-        Q: "Did you enjoy this trivia?",
+        Q: "Did you enjoy this trivia?b",
         A: ['Yes', 'Yes', 'Yes', 'Yes']
     },
 

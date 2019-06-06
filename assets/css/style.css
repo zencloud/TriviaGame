@@ -137,12 +137,12 @@ h2 {
     width: 177px;
     text-align: left;
     color: var(--white);
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .cell-answers > p {
-    display: inline;
-    cursor: pointer;
+  margin-left: 35px;
+  margin-top: 6px;
 }
 
 
@@ -172,16 +172,43 @@ button:focus {
 
 /* Input: Radio Buttons ----------------------------------*/
 
-input[type="radio"] {
-    border: none;
-    background-color: var(--white);
-    width: 20px;
-    height: 20px;
-    /* float: left; */
-    margin-top: -3px;
+input[type='radio'] {
+  float: left;
 }
 
+input[type='radio']:after {
+  width: 18px;
+  height: 18px;
+  border-radius: 15px;
+  top: -2px;
+  left: -3px;
+  position: relative;
+  background-color: white;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 4px solid white;
+  cursor: pointer;
+}
 
+input[type='radio']:checked:after {
+  width: 18px;
+  height: 18px;
+  border-radius: 15px;
+  top: -2px;
+  left: -3px;
+  position: relative;
+  background-color: #e77e22;
+  content: '';
+  text-align: center;
+  display: inline-block;
+  visibility: visible;
+  border: 4px solid white;
+}
+
+input[type='radio']:hover:after {
+  background-color: #e77e22;
+}
 /* Animation Setup ---------------------------------- */
 
 .animate-drop-div {

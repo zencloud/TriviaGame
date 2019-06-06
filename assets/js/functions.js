@@ -22,18 +22,6 @@ function app_new_game () {
         ui_show_element("container-answers");
     }, 400);
 
-    // Begin Timer
-    let timerIndex = setInterval(() => {
-        appData.timeSecLeft--;
-        document.getElementById("time-display").innerText = appData.timeSecLeft + 's';
-
-        // Check timeout
-        if (appData.timeSecLeft === 0) {
-            clearInterval(timerIndex);
-        }
-
-    }, 1000);
-
     // Set Timer End
 
     // Hide Welcome Content
@@ -63,27 +51,64 @@ function app_load_question(questionIndex) {
         // Push data intop divs
         divAnswers.classList.add("cell-answers")
         divAnswers.innerHTML = `
-            <input type="radio" onclick="app_check_answer(this)" value="${aIndex}" name="answer-choice">
-            <p> ${newValue}</p>
+            <input type="radio" onclick="app_check_answer(this)" id="${aIndex}" name="answer-choice">
+            <p>${newValue}</p>
         `;
 
         // Append answer div to answer container
         answerDiv.appendChild(divAnswers);
     });
+
+    // Reset timer
+    app_timer_reset();
+}
+
+// Reset Question Timer
+function app_timer_reset() {
+    
+    // Reset Old Timer
+    clearInterval(appData.timerIndex);
+    appData.timeSecLeft = 20;
+    document.getElementById("time-display").innerText = appData.timeSecLeft + 's';
+
+    // Begin Timer
+    appData.timerIndex = setInterval(() => {
+        appData.timeSecLeft--;
+        document.getElementById("time-display").innerText = appData.timeSecLeft + 's';
+
+        // Check timeout
+        if (appData.timeSecLeft === 0) {
+            clearInterval(appData.timerIndex);
+        }
+    }, 1000);
 }
 
 
+// Check if Answer is Correct
 function app_check_answer(self) {
 
     // Init Vars
-    answerIndex = parseInt(self.value);
+    answerIndex = parseInt(self.id);
 
     if (answerIndex === 0) {
-        console.log("Correct!");
+        
+        appData.questionCorrect++;
+        //self.parentElement.style.color = "green";
     }
     else {
-        console.log("Wrong!");
+        appData.questionWrong++;
     }
+
+    // Load New Question
+
+    if (appData.questionID === 4) {
+        console.log("Game Over");
+        return null;
+    }
+    
+    appData.questionID++;
+    app_load_question(appData.questionID);
+
 }
 
 
