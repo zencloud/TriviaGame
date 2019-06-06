@@ -22,7 +22,6 @@ function app_new_game () {
         ui_show_element("container-answers");
     }, 400);
 
-    // Set Timer End
 
     // Hide Welcome Content
     ui_hide_element("btn-game-start");
@@ -72,7 +71,7 @@ function app_timer_reset() {
     
     // Reset Old Timer
     clearInterval(appData.timerIndex);
-    appData.timeSecLeft = 20;
+    appData.timeSecLeft = appData.timeMaxRound;
     document.getElementById("time-display").innerText = appData.timeSecLeft + 's';
 
     // Begin Timer
@@ -97,6 +96,9 @@ function app_check_answer(self) {
 
     // Init Vars
     answerIndex = parseInt(self.id);
+
+    // Audio
+    //appData.audioBtnClick.play();
 
     if (answerIndex === 0) {
         

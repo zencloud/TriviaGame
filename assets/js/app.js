@@ -42,8 +42,12 @@ const appData = {
     questionWrong:   0,     // Wrong questions total
 
     // Time Data
-    timeSecLeft:     20,     // Value equal to seconds
-    timerIndex:      0
+    timeMaxRound:    20,
+    timeSecLeft:     this.timeMaxRound,     // Value equal to seconds
+    timerIndex:      0,
+
+    // Audio
+    audioBtnClick: new Audio('assets/audio/audio_btn_select.wav')
 
 }
 
