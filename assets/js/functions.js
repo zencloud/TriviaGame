@@ -106,16 +106,9 @@ function app_check_answer(self) {
     else {
         appData.questionWrong++;
     }
-
-    // Load New Question
-    if (appData.questionID === 4) {
-        console.log("Game Over");
-        app_end_session();
-        return null;
-    }
     
     app_next_question();
-    app_check_round();
+    app_check_round(); 
 }
 
 // Icrease question ID count
@@ -127,12 +120,24 @@ function app_next_question() {
 function app_check_round() {
 
     // Check if last question, else next question
-    console.log(appData.questionID)
     if (appData.questionID === appData.questionTotal) {
-        console.log("Game Over")
+        app_end_session();
     }
     else {
-        app_load_question(appData.questionID);
+        
+        let answerDiv = document.getElementById("container-answers");
+        answerDiv.classList.remove("animate-swing-in");
+        answerDiv.classList.add("animate-flip-up");
+
+
+        setTimeout(() => {
+            app_load_question(appData.questionID);
+        }, 500);
+
+        setTimeout(() => {
+            answerDiv.classList.remove("animate-flip-up");
+            answerDiv.classList.add("animate-drop-div");
+        }, 500);
     }
 
 }
