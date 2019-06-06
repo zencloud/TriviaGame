@@ -22,7 +22,6 @@ function app_new_game () {
         ui_show_element("container-answers");
     }, 400);
 
-
     // Begin Timer
     let timerIndex = setInterval(() => {
         appData.timeSecLeft--;
@@ -50,12 +49,57 @@ function app_load_question(questionIndex) {
 
     // Update Question Display
     document.getElementById("question-display").innerText = get_question(questionIndex);
+    
     // Loop through an append 4 questions in random order
+    let answerArray = array_copy_shuffled(get_question_answer_array(appData.questionID));
+    let answerDiv   = document.getElementById("container-answers");
+    answerDiv.innerHTML = '';
+    answerArray.forEach(function(value, index) {
+
+        let aIndex     = get_question_answer_array(appData.questionID).indexOf(value);      // Get answer array index
+        let newValue   = html_get_escaped(value);                                           // Escape HTML 
+        let divAnswers = document.createElement('div');                                     
+
+        // Push data intop divs
+        divAnswers.classList.add("cell-answers")
+        divAnswers.innerHTML = `
+            <input type="radio" onclick="app_check_answer(this)" value="${aIndex}" name="answer-choice">
+            <p> ${newValue}</p>
+        `;
+
+        // Append answer div to answer container
+        answerDiv.appendChild(divAnswers);
+    });
 }
+
+
+function app_check_answer(self) {
+
+    // Init Vars
+    answerIndex = parseInt(self.value);
+
+    if (answerIndex === 0) {
+        console.log("Correct!");
+    }
+    else {
+        console.log("Wrong!");
+    }
+}
+
+
+
 
 // Get Question
 function get_question(questionIndex) {
     return questionLibrary[questionIndex].Q;
+}
+
+
+// Get Question Answer from Array. 0 is always answer.
+function get_question_answer_array(questionIndex) { 
+
+    return questionLibrary[questionIndex].A;
+
 }
 
 // Get Question Answer from Array. 0 is always answer.

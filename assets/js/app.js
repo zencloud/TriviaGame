@@ -5,7 +5,7 @@ const appData = {
     
     // Question Data
     questionRound:   0,     // Question X of Y
-    questionID:      1,     // Array index to grab question from
+    questionID:      0,     // Array index to grab question from
     questionCorrect: 0,     // Correct questions total
     questionWrong:   0,     // Wrong questions total
 
@@ -44,7 +44,7 @@ const questionLibrary = [
         A: ['Yes', 'Yes', 'Yes', 'Yes']
     },
 
-]
+];
 
 // App first run initialization ------------
 
