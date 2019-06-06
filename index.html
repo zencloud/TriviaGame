@@ -18,7 +18,7 @@
     <!-- Wrapper -->
     <div id="wrapper">
         
-        <!-- Spacer Fix (HACKY) -->
+        <!-- Header fix to stop child div from pulling down wrapper div -->
         <div>&nbsp;</div>
 
         <!-- Time Remaining --> 
@@ -31,9 +31,9 @@
 
         <!-- Question -->
         <div id="container-question" class="round-box">
-            <h2>Question 1 of 5:</h2>
+            <h2 id="question-number">Question 1 of 5:</h2>
             <div id="question-display">
-                What is the thing in the thing in the place in the thing?
+                <p>What is the thing in the thing in the place in the thing?</p>
             </div>
         </div>
 
@@ -67,6 +67,7 @@
             <p>You will be given 5 questions to answer. You have 20 seconds to answer each question.</p>
             <p>Good Luck!</p>
         </div>
+        
         <!-- Player Input Button -->
         <div class="round-box center">
             <button id="btn-game-start">Start Trivia!</button>

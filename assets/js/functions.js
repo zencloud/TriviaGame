@@ -36,7 +36,7 @@ function app_new_game () {
 function app_load_question(questionIndex) {
 
     // Update Question Display
-    document.getElementById("question-display").innerText = get_question(questionIndex);
+    document.getElementById("question-display").innerHTML = `<p class="center">${get_question(questionIndex)}</p>`;
     
     // Loop through an append 4 questions in random order
     let answerArray = array_copy_shuffled(get_question_answer_array(appData.questionID));
@@ -57,6 +57,10 @@ function app_load_question(questionIndex) {
 
         // Append answer div to answer container
         answerDiv.appendChild(divAnswers);
+
+        // Update Question Number
+        let questionNumberDiv = document.getElementById("question-number");
+        questionNumberDiv.innerText = `Question ${appData.questionID+1} of 5:`;
     });
 
     // Reset timer
@@ -78,7 +82,11 @@ function app_timer_reset() {
 
         // Check timeout
         if (appData.timeSecLeft === 0) {
-            clearInterval(appData.timerIndex);
+            
+            appData.questionWrong++;
+            appData.questionID++;
+            app_load_question(appData.questionID);
+            //clearInterval(appData.timerIndex);
         }
     }, 1000);
 }
@@ -100,38 +108,81 @@ function app_check_answer(self) {
     }
 
     // Load New Question
-
     if (appData.questionID === 4) {
         console.log("Game Over");
+        app_end_session();
         return null;
     }
     
+    app_next_question();
+    app_check_round();
+}
+
+// Icrease question ID count
+function app_next_question() {
     appData.questionID++;
-    app_load_question(appData.questionID);
+}
+
+// Check Round
+function app_check_round() {
+
+    // Check if last question, else next question
+    console.log(appData.questionID)
+    if (appData.questionID === appData.questionTotal) {
+        console.log("Game Over")
+    }
+    else {
+        app_load_question(appData.questionID);
+    }
 
 }
 
+function app_end_session() {
+
+    // Clear Ttimer
+    clearInterval(appData.timerIndex);
+
+    // Hide UI Elements
+    ui_hide_element("container-answers");
+    ui_hide_element("container-time-remaining");
+
+    // Show Elements
+    ui_show_element("btn-game-start");
+
+    // Update Existing Containers
+    let questionNumberText = document.getElementById("question-number");
+    let questionText = document.getElementById("question-display");
+
+    questionNumberText.innerText = "All questions complete."
+    questionText.innerText = `
+        Correct: ${appData.questionCorrect}
+        Missed: ${appData.questionWrong}
+    `;
+
+    // Setup for next session
+    app_reset_data();
+}
 
 
+function app_reset_data() {
+    appData.questionID      = 0;
+    appData.questionWrong   = 0;
+    appData.questionCorrect = 0;
+}
 
-// Get Question
+// Get Question String
 function get_question(questionIndex) {
     return questionLibrary[questionIndex].Q;
 }
 
-
-// Get Question Answer from Array. 0 is always answer.
+// Get Answer Array. 0 is always answer.
 function get_question_answer_array(questionIndex) { 
-
     return questionLibrary[questionIndex].A;
-
 }
 
-// Get Question Answer from Array. 0 is always answer.
+// Get Question Answer by index
 function get_question_answer(questionIndex, answerIndex) { 
-
     return questionLibrary[questionIndex].A[answerIndex];
-
 }
 
 

@@ -1,21 +1,5 @@
 /// Core Application
 
-// App Data
-const appData = {
-    
-    // Question Data
-    questionRound:   0,     // Question X of Y
-    questionID:      0,     // Array index to grab question from
-    questionCorrect: 0,     // Correct questions total
-    questionWrong:   0,     // Wrong questions total
-
-    // Time Data
-    timeSecLeft:     20,     // Value equal to seconds
-    timerIndex:      0
-
-}
-
-
 // Question Library
 // A[0] is always answer
 const questionLibrary = [
@@ -41,11 +25,27 @@ const questionLibrary = [
     },
 
     {
-        Q: "Did you enjoy this trivia?b",
+        Q: "Did you enjoy this trivia?",
         A: ['Yes', 'Yes', 'Yes', 'Yes']
     },
 
 ];
+
+// App Data
+const appData = {
+    
+    // Question Data
+    questionTotal:    questionLibrary.length,
+    questionRound:   0,     // Question X of Y
+    questionID:      0,     // Array index to grab question from
+    questionCorrect: 0,     // Correct questions total
+    questionWrong:   0,     // Wrong questions total
+
+    // Time Data
+    timeSecLeft:     20,     // Value equal to seconds
+    timerIndex:      0
+
+}
 
 // App first run initialization ------------
 
