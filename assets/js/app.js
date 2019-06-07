@@ -62,3 +62,7 @@ ui_hide_element("container-message-hud");
 
 // Bind Setup Button
 document.getElementById("btn-game-start").addEventListener('click', app_new_game);
+
+let arr = [55,3,6,7,9];
+
+console.log(Math.min(...arr));
