@@ -94,6 +94,11 @@ function app_timer_reset() {
 // Check if Answer is Correct
 function app_check_answer(self) {
 
+    // Check if input allowed
+    if (!appData.inputAllowed) { return null; }
+
+    // Disable Input after choice
+    appData.inputAllowed = false;
     // Init Vars
     answerIndex = parseInt(self.id);
 
@@ -125,20 +130,28 @@ function app_check_round() {
     if (appData.questionID === appData.questionTotal) {
         app_end_session();
     }
+
+    // Not last question, bring up next question.
     else {
         
         let answerDiv = document.getElementById("container-answers");
         answerDiv.classList.remove("animate-swing-in");
         answerDiv.classList.add("animate-flip-up");
 
-
+        // Load next question after delay
         setTimeout(() => {
             app_load_question(appData.questionID);
         }, 500);
 
+        // Animate answers div
         setTimeout(() => {
             answerDiv.classList.remove("animate-flip-up");
             answerDiv.classList.add("animate-drop-div");
+        }, 500);
+
+        // Give input back to user
+        setTimeout(() => {
+            appData.inputAllowed = true;
         }, 500);
     }
 

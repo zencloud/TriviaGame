@@ -47,7 +47,10 @@ const appData = {
     timerIndex:      0,
 
     // Audio
-    audioBtnClick: new Audio('assets/audio/audio_btn_select.wav')
+    audioBtnClick: new Audio('assets/audio/audio_btn_select.wav'),
+
+    // User Input
+    inputAllowed: true
 
 }
 
@@ -64,5 +67,4 @@ ui_hide_element("container-message-hud");
 document.getElementById("btn-game-start").addEventListener('click', app_new_game);
 
 let arr = [55,3,6,7,9];
-
 console.log(Math.min(...arr));
