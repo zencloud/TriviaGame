@@ -161,13 +161,24 @@ function app_end_session() {
 
     // Clear Ttimer
     clearInterval(appData.timerIndex);
+    
+    // Animate Answers
+    let answerDiv = document.getElementById("container-answers");
+    let timeRemainingDiv = document.getElementById("container-time-remaining");
+    answerDiv.classList.remove("animate-swing-in");
+    answerDiv.classList.add("animate-flip-up");
+    timeRemainingDiv.classList.remove("animate-swing-in");
+    timeRemainingDiv.classList.add("animate-flip-up");
 
     // Hide UI Elements
-    ui_hide_element("container-answers");
-    ui_hide_element("container-time-remaining");
+    //ui_hide_element("container-answers");
+    //ui_hide_element("container-time-remaining");
 
     // Show Elements
     ui_show_element("btn-game-start");
+    let btnDiv = document.getElementById("btn-game-start");
+    btnDiv.classList.add("animate-swing-in");
+    btnDiv.innerText = "Try again!"
 
     // Update Existing Containers
     let questionNumberText = document.getElementById("question-number");
@@ -213,8 +224,13 @@ function ui_show_element(element) {
     
     // Get element and show
     document.getElementById(element).style.display = '';
-    document.getElementById(element).classList.add("animate-swing-in");
+    document.getElementById(element).classList.remove("animate-swing-in");
+    document.getElementById(element).classList.remove("animate-flip-up");
 
+
+    setTimeout(() => {
+        document.getElementById(element).classList.add("animate-swing-in");
+    }, 1);
 }
 
 // Hide Element
