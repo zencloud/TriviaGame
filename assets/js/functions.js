@@ -198,6 +198,7 @@ function app_reset_data() {
     appData.questionID      = 0;
     appData.questionWrong   = 0;
     appData.questionCorrect = 0;
+    appData.inputAllowed = true;
 }
 
 // Get Question String
