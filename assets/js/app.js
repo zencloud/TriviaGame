@@ -35,7 +35,7 @@ const questionLibrary = [
 const appData = {
     
     // Question Data
-    questionTotal:    questionLibrary.length,
+    questionTotal:   questionLibrary.length,
     questionRound:   0,     // Question X of Y
     questionID:      0,     // Array index to grab question from
     questionCorrect: 0,     // Correct questions total
@@ -65,6 +65,3 @@ ui_hide_element("container-message-hud");
 
 // Bind Setup Button
 document.getElementById("btn-game-start").addEventListener('click', app_new_game);
-
-let arr = [55,3,6,7,9];
-console.log(Math.min(...arr));

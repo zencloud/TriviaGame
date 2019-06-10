@@ -69,7 +69,6 @@ function app_load_question(questionIndex) {
 // Reset Question Timer
 function app_timer_reset() {
     
-    // Reset Old Timer
     clearInterval(appData.timerIndex);
     appData.timeSecLeft = appData.timeMaxRound;
     document.getElementById("time-display").innerText = appData.timeSecLeft + 's';
@@ -94,7 +93,7 @@ function app_timer_reset() {
 // Check if Answer is Correct
 function app_check_answer(self) {
 
-    // Check if input allowed
+    // Check if input is allowed: early exit.
     if (!appData.inputAllowed) { return null; }
 
     // Disable Input after choice
